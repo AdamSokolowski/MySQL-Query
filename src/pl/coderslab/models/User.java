@@ -13,6 +13,7 @@ public class User {
 	private String username;
 	private String password;
 	private String email;
+	private int userGroupId;
 	
 	public User(String username, String email, String password){
 		this.username = username;
@@ -40,9 +41,17 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public int getUserGroupId() {
+		return userGroupId;
+	}
+
+	public void setUserGroupId(int userGroupId) {
+		this.userGroupId = userGroupId;
+	}
 	public int getId() {
 		return id;
 	}
+	
 
 
 	public void saveToDB(Connection conn) throws SQLException {
@@ -80,12 +89,12 @@ public class User {
 		preparedStatement.setInt(1, id);
 		ResultSet resultSet	= preparedStatement.executeQuery();
 		if	(resultSet.next()) {
-			User loadedUser	= new User();
-			loadedUser.id=(resultSet.getInt("id"));
-			loadedUser.setUsername(resultSet.getString("username"));
-			loadedUser.setPassword(resultSet.getString("password"));
-			loadedUser.setEmail(resultSet.getString("email"));
-			return	loadedUser;
+			User loadedSolution	= new User();
+			loadedSolution.id=(resultSet.getInt("id"));
+			loadedSolution.setUsername(resultSet.getString("username"));
+			loadedSolution.setPassword(resultSet.getString("password"));
+			loadedSolution.setEmail(resultSet.getString("email"));
+			return	loadedSolution;
 		}
 		return	null;
 	}
@@ -98,12 +107,12 @@ public class User {
 		preparedStatement	=	conn.prepareStatement(sql);
 		ResultSet	resultSet	=	preparedStatement.executeQuery();
 		while	(resultSet.next())	{
-			User	loadedUser	=	new	User();
-			loadedUser.id	=	resultSet.getInt("id");
-			loadedUser.username	=	resultSet.getString("username");
-			loadedUser.password	=	resultSet.getString("password");
-			loadedUser.email	=	resultSet.getString("email");
-			users.add(loadedUser);}
+			User	loadedSolution	=	new	User();
+			loadedSolution.id	=	resultSet.getInt("id");
+			loadedSolution.username	=	resultSet.getString("username");
+			loadedSolution.password	=	resultSet.getString("password");
+			loadedSolution.email	=	resultSet.getString("email");
+			users.add(loadedSolution);}
 		User[]	uArray	=	new	User[users.size()];
 		uArray	=	users.toArray(uArray);
 		return	uArray;}
@@ -118,5 +127,7 @@ public class User {
 						this.id=0;
 		}
 }
+
+
 	
 }
