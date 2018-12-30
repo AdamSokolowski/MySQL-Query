@@ -1,2 +1,4 @@
 # MySQL Query
-Program do wykonywania operacji na bazie danych za pośrednictwem zapytań SQL Do celów "hashowania" haseł wykorzystano bibliotekę JBCrypt. MySQL JBCrypt
+Application that does operations on database via SQL queries. Used JBCrypt library to password hashcoding.
+
+Tech used: MySQL, JBCrypt
